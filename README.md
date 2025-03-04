@@ -26,7 +26,7 @@ The **Gesture-Based YouTube Control System** implements a real-time gesture-base
 - The **MLP model** can be retrained with new data to improve gesture recognition accuracy and expand the system's capabilities.
 
 ## 🔧 System Architecture
-![System Architecture](WhatsApp%20Image%202025-03-04%20at%2012.16.58_dcb7441f.jpg)
+![System Architecture](architecture.jpg)
 
 ## 📌 Installation
 ```bash
