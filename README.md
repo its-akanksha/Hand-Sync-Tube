@@ -1,33 +1,32 @@
 # Gesture-Based YouTube Control System
 
 ## Overview
-The **Gesture-Based YouTube Control System** allows users to control YouTube playback using hand gestures, eliminating the need for traditional input devices like a mouse and keyboard. This system enhances accessibility, improves user experience, and increases operational efficiency, especially for users with limited mobility.
+The **Gesture-Based YouTube Control System** implements a real-time gesture-based YouTube control system using computer vision and machine learning techniques. This system enhances accessibility, improves user experience, and increases operational efficiency, especially for users with limited mobility.
 
 ## Key Features
-### 🎯 **Intuitive Gesture Control**
-- Enables hands-free interaction with YouTube using hand gestures.
-- Supports common playback controls like play, pause, volume adjustment, and navigation.
-- Uses **MediaPipe** for hand tracking and **PyAutoGUI** for simulating keyboard and mouse actions.
 
-### 🔄 **Increased Efficiency & Productivity**
-- Eliminates the need for physical input devices, improving usability.
-- Enhances workflow for users consuming video content while multitasking.
+### 🖐️ **Hand Gesture Recognition**
+- Utilizes **MediaPipe** for hand detection and landmark extraction, providing **21 3D hand landmarks**.
+- A pre-trained **Multilayer Perceptron (MLP)** model classifies hand gestures from processed landmark data, enabling control actions.
 
-### 💰 **Cost-Effective & Open-Source**
-- Built using **MediaPipe** and **PyAutoGUI**, making it affordable and easy to maintain.
-- No reliance on proprietary software, ensuring flexibility and adaptability.
+### 🎮 **YouTube Player Control**
+- Hand gestures are mapped to specific YouTube player controls like **play/pause, volume up/down, forward/backward, and fullscreen**.
+- **PyAutoGUI** simulates mouse and keyboard inputs based on recognized gestures, controlling the YouTube player.
 
-### 🛠️ **Enhanced Scalability & Performance**
-- Modular codebase with separate components for model architecture, utilities, and Flask API.
-- Logging and debugging mechanisms for continuous improvement in gesture recognition accuracy.
+### 💤 **User State Detection (Sleepiness and Absence)**
+- **Dlib's face landmark detection** calculates **Eye Aspect Ratio (EAR)** for sleepiness detection.
+- **MediaPipe's face detection** monitors user presence, pausing the video when the user is absent for a certain duration.
 
-### 💤 **Sleepiness & Absence Detection**
-- Automatically pauses the video when the user is not actively engaged.
-- Reduces unnecessary resource consumption and ensures uninterrupted viewing when needed.
+### 🌐 **Web Application Interface (Flask)**
+- A **Flask web application** provides a user interface for inputting YouTube video links.
+- The application streams video feed from the webcam, displaying **real-time hand gesture recognition** results and controlling the YouTube player accordingly.
 
-### 🌍 **Accessibility & Inclusivity**
-- Provides an alternative input method for users with limited mobility.
-- Enhances YouTube usability for a broader audience.
+### 📊 **Data Collection and Model Training**
+- Allows **recording and labeling** of new hand gesture data for model training.
+- The **MLP model** can be retrained with new data to improve gesture recognition accuracy and expand the system's capabilities.
+
+## 🔧 System Architecture
+![System Architecture](WhatsApp%20Image%202025-03-04%20at%2012.16.58_dcb7441f.jpg)
 
 ## 📌 Installation
 ```bash
@@ -49,9 +48,14 @@ python main.py
 
 ## 🛠️ Technologies Used
 - **Python**
-- **MediaPipe** (for hand gesture detection)
+- **OpenCV** (for video frame processing)
+- **MediaPipe** (for hand and face tracking)
+- **Dlib** (for face landmark detection)
+- **NumPy** (for data processing)
+- **PyTorch** (for gesture recognition model)
 - **PyAutoGUI** (for simulating keyboard/mouse inputs)
 - **Flask** (for backend integration)
+- **Streamlit** (for UI rendering)
 
 ## 📝 Future Enhancements
 - Support for customizable gestures.
